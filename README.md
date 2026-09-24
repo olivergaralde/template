@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Template
 
-## Getting Started
+A reusable starting point for new Next.js projects — TypeScript (strict), Tailwind CSS, shadcn/ui-style components, and Prettier/ESLint already wired together and tested.
 
-First, run the development server:
+## What's included
+
+- **Next.js (App Router)** + **TypeScript** with extra strict compiler flags (`noUncheckedIndexedAccess`, `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`)
+- **Tailwind CSS v4** with a full CSS-variable theme (light/dark via `.dark` class, not just OS preference)
+- **shadcn/ui** (Radix + Nova preset) — `Button`, `Card`, `Input` already added; run `npx shadcn@latest add <component>` for more
+- **Prettier** (with `prettier-plugin-tailwindcss` for automatic class sorting) + **ESLint**, configured not to conflict with each other
+- **Central site config** (`src/config/site.ts`) and `.env.example` for environment variables
+- Folder structure ready for growth: `src/components/ui`, `src/lib`, `src/hooks`, `src/types`, `src/config`
+
+## Getting started
+
+1. Click **Use this template** on GitHub (or clone directly) to create a new project from this base.
+2. Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Copy the env file and fill in real values:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+   cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the dev server:
 
-## Learn More
+```bash
+   npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command                | What it does                             |
+| ---------------------- | ---------------------------------------- |
+| `npm run dev`          | Start the dev server                     |
+| `npm run build`        | Production build                         |
+| `npm run start`        | Run the production build                 |
+| `npm run lint`         | Run ESLint                               |
+| `npm run format`       | Format all files with Prettier           |
+| `npm run format:check` | Check formatting without writing changes |
+| `npm run typecheck`    | Run `tsc --noEmit`                       |
 
-## Deploy on Vercel
+## Adding more shadcn/ui components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npx shadcn@latest add <component-name>
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Components land in `src/components/ui/` and automatically match the theme in `src/app/globals.css`.
+
+## Project structure
+
+```
+src/
+├── app/            # App Router pages and layouts
+├── components/ui/  # shadcn/ui components
+├── config/         # Site-wide config (src/config/site.ts)
+├── hooks/          # Custom React hooks
+├── lib/            # Utilities (cn() helper, etc.)
+└── types/          # Shared TypeScript types
+```
